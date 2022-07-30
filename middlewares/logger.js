@@ -12,4 +12,6 @@ const middleLoggerWarm = (req = request, res = response, next) => {
   next();
 };
 
-module.exports = { middleLogger, middleLoggerWarm };
+module.exports = { 
+  middleLogger, 
+  middleLoggerWarm };
