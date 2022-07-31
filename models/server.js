@@ -3,9 +3,6 @@ const cors = require('cors');
 const express = require('express');
 const compression = require('compression')
 
-// const handlebars = require('express-handlebars')
-const { engine } = require('express-handlebars');
-
 const path = require('path');
 const passport = require('passport');
 const cookieParser = require('cookie-parser')
@@ -38,24 +35,8 @@ class Server {
     }
 
     middlewares() {
-
-        // Express HBS engine
-        /*
-        this.app.engine(
-            "hbs",
-            engine({
-                layoutsDir: path.join(__dirname, "../views/layouts"), // Ruta de los layouts
-                defaultLayout: "layout.hbs", // Layout por defecto
-                extname: ".hbs", // Extensión de los archivos
-            })
-        );
-        this.app.set("view engine", "hbs");
-        this.app.set("views", path.join(__dirname, "../views"));
-        // this.hbs.registerPartials(__dirname + '/views/partials', function(err) {});
-        */
-       
         // CORS
-        // this.app.use( cors() );
+        this.app.use( cors() );
 
         // Lectura y parseo del body
         this.app.use(express.json());
@@ -86,8 +67,8 @@ class Server {
         ));
     }
 
-    routes() {  
-        this.app.use("/", infoLogger,    require("../routes/info.routes"));
+    routes() {
+        this.app.use("/", infoLogger, require("../routes/info"));
         this.app.use("*", warnLogger);
 
         // this.app.use( this.authPath,     require('../routes/auth.routes'));

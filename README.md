@@ -23,7 +23,7 @@ Loggear todos los niveles a consola (info, warning y error)
 Registrar sólo los logs de warning a un archivo llamada warn.log
 Enviar sólo los logs de error a un archivo llamada error.log
 
-Recordar ejecutar con el 
+Recordar ejecutar con el comando
 
 node app.js --port NUMERO_PUERTO --modo fork
 ### Segunda Parte: ANÁLISIS COMPLETO DE PERFORMANCE
