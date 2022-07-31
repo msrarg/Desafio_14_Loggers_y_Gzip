@@ -23,6 +23,9 @@ Loggear todos los niveles a consola (info, warning y error)
 Registrar sólo los logs de warning a un archivo llamada warn.log
 Enviar sólo los logs de error a un archivo llamada error.log
 
+Recordar ejecutar con el 
+
+node app.js --port NUMERO_PUERTO --modo fork
 ### Segunda Parte: ANÁLISIS COMPLETO DE PERFORMANCE
 
 >> Consigna: Luego, realizar el análisis completo de performance del servidor con el que venimos trabajando.

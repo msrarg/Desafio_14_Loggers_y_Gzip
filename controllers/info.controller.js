@@ -3,6 +3,7 @@ const { response } = require('express');
 const { logger }   = require("../utils/logger");
 const process = require('process');
 
+/*
 const info = ( req = request, res = response ) => {
     const info = {
         arguments:process.argv.slice(2),
@@ -16,20 +17,30 @@ const info = ( req = request, res = response ) => {
     res.render("pages/info",info);
 }
 
-/*
+const warning = (req, res) => {
+    logger.warn('Se registra un warning')
+    res.render('WARNING')
+};
+
+const error = (req, res) => {
+    logger.error('Se registra un error')
+    res.render('ERROR')
+};
+*/
+
 const info = (req, res) => {
     res.send('INFO')
 }
-*/
+
 const warning = (req, res) => {
-    logger.warn('Aca se indica un warning')
+    logger.warn('Se registra un warning')
     res.send('WARNING')
-}
+};
 
 const error = (req, res) => {
-    logger.error('Aca se indica un error')
+    logger.error('Se registra un error')
     res.send('ERROR')
-}
+};
 
 module.exports = {
     info,

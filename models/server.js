@@ -14,8 +14,7 @@ const argv = require('../config/config.yargs');
 const { dbConnectionMongoAtlas } = require('../database/db-config');
 const { sessionMongoDB }         = require('../config/config.session.js');
 const { initializePassport }     = require('../config/config.passport.js');
-
-const { middleLogger, middleLoggerWarm } = require("./middleware/logger");
+const { infoLogger, warnLogger } = require("../middlewares/logger");
 
 class Server {
     constructor() {
@@ -41,6 +40,7 @@ class Server {
     middlewares() {
 
         // Express HBS engine
+        /*
         this.app.engine(
             "hbs",
             engine({
@@ -52,9 +52,10 @@ class Server {
         this.app.set("view engine", "hbs");
         this.app.set("views", path.join(__dirname, "../views"));
         // this.hbs.registerPartials(__dirname + '/views/partials', function(err) {});
-
+        */
+       
         // CORS
-        this.app.use( cors() );
+        // this.app.use( cors() );
 
         // Lectura y parseo del body
         this.app.use(express.json());
@@ -69,7 +70,7 @@ class Server {
         this.app.use(cookieParser());
 
         // Directorio publico
-        this.app.use(express.static('public')); // Ruta de la carpeta public
+        // this.app.use(express.static('public')); // Ruta de la carpeta public
         // this.app.use(express.static(path.join(__dirname, '/views')));
         // this.app.use(express.static(path.join(__dirname, 'public')));
 
@@ -86,8 +87,8 @@ class Server {
     }
 
     routes() {  
-        app.use("/", middleLogger, require("./routes/example"));
-        app.use("*", middleLoggerWarm);
+        this.app.use("/", infoLogger,    require("../routes/info.routes"));
+        this.app.use("*", warnLogger);
 
         // this.app.use( this.authPath,     require('../routes/auth.routes'));
         // this.app.use('/',                require('../routes/info.routes'));
@@ -100,7 +101,7 @@ class Server {
             console.log(`Server up on port: ${this.port} in process ID:(${process.pid})`); 
         });
 
-        this.app.on('error', (err) => console.log(err));
+        this.app.on('error', (error) => console.log(error));
     }
 }
 

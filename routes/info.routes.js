@@ -8,4 +8,8 @@ router.get('/info',    info);
 router.get('/warning', warning);
 router.get('/error',   error);
 
+router.get('/favicon.ico', (req, res) => {
+    res.sendStatus(200);
+});
+
 module.exports = { router };
